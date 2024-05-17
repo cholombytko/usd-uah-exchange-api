@@ -1,13 +1,13 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { SubscribeService } from './subscribe.service';
-import { CreateSubscribeDto } from './dto/create-subscribe.dto';
+import { CreateSubscribtionDto } from './dto/create-subscription.dto';
 
 @Controller('subscribe')
 export class SubscribeController {
   constructor(private readonly subscribeService: SubscribeService) {}
 
   @Post()
-  create(@Body() createSubscribeDto: CreateSubscribeDto) {
-    return this.subscribeService.create(createSubscribeDto);
+  create(@Body() createSubscribtionDto: CreateSubscribtionDto) {
+    return this.subscribeService.createSubscription(createSubscribtionDto);
   }
 }

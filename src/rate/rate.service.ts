@@ -15,7 +15,7 @@ export class RateService {
         this.httpService.get<IGetExchangeRate[]>(API_URL),
       );
 
-      const data: IGetExchangeRate = response.data[0];
+      const data = response.data[0];
 
       return {
         date: data.exchangedate,

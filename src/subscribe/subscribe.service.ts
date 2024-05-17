@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CreateSubscribeDto } from './dto/create-subscribe.dto';
+import { EmailService } from 'src/email/email.service';
+import { ICreateSubscription } from './interfaces/create-subscription.interface';
 
 @Injectable()
 export class SubscribeService {
-  create(createSubscribeDto: CreateSubscribeDto) {
-    return 'This action adds a new subscribe';
+  constructor(private emailService: EmailService) {}
+
+  public async createSubscription(payload: ICreateSubscription) {
+    return this.emailService.create(payload.email);
   }
 }
