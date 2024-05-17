@@ -8,9 +8,9 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - postgres
+      - db
 
-  postgres:
+  db:
     image: postgres:14
     restart: always
     env_file: .env
@@ -19,4 +19,4 @@ services:
       POSTGRES_PASSWORD: $DB_PASSWORD
       POSTGRES_DB: $DB_NAME
     ports:
-      - "5434:5432"
+      - "5432:5432"
