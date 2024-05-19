@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Email } from './entities/email.entity';
+import { Email } from '../entities/email.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -21,5 +21,12 @@ export class EmailService {
     const newEmail = this.emailRepository.create({ email });
     await this.emailRepository.save(newEmail);
     return newEmail;
+  }
+
+  public async findAll(isSubscribed: boolean): Promise<Email[]> {
+    const emails = await this.emailRepository.find({
+      where: { isSubscribed },
+    });
+    return emails;
   }
 }

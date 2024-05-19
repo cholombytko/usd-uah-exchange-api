@@ -1,4 +1,4 @@
-export interface IGetExchangeRate {
+export interface IGetExchangeRateResponse {
   readonly r030: number;
 
   readonly txt: string;
