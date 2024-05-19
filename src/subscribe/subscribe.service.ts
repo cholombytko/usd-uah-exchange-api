@@ -13,18 +13,14 @@ export class SubscribeService {
 
   public async createSubscription(
     payload: ICreateSubscription,
-  ): Promise<boolean> {
-    try {
-      await this.emailService.create(payload.email);
-      return true;
-    } catch (error) {
-      return false;
-    }
+  ): Promise<{ message: string }> {
+    await this.emailService.create(payload.email);
+    return { message: 'E-mail succesfully subscribed' };
   }
 
   public async sendMailToSubscribers(
     payload: ISendToSubscribers,
-  ): Promise<boolean> {
+  ): Promise<void> {
     const subscribers = await this.emailService.findAll(true);
     const mailPromises = subscribers.map((subscriber) => {
       return this.mailingService.sendMail({
@@ -35,7 +31,5 @@ export class SubscribeService {
     });
 
     await Promise.all(mailPromises);
-
-    return true;
   }
 }

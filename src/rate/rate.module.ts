@@ -7,5 +7,6 @@ import { HttpModule } from '@nestjs/axios';
   imports: [HttpModule],
   controllers: [RateController],
   providers: [RateService],
+  exports: [RateService],
 })
 export class RateModule {}
