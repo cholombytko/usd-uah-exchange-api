@@ -1,7 +1,7 @@
 import { Controller, Post, Body, HttpCode, HttpStatus } from '@nestjs/common';
 import { SubscribeService } from './subscribe.service';
 import { CreateSubscriptionDto } from './dto/create-subscription.dto';
-import { ISubscribeResponse } from './interfaces/subscribe-response.interface';
+import { ISubscribeResult } from './interfaces/subscribe-response.interface';
 
 @Controller('subscribe')
 export class SubscribeController {
@@ -11,7 +11,7 @@ export class SubscribeController {
   @HttpCode(HttpStatus.OK)
   public async create(
     @Body() createSubscriptionDto: CreateSubscriptionDto,
-  ): Promise<ISubscribeResponse> {
+  ): Promise<ISubscribeResult> {
     return await this.subscribeService.createSubscription(
       createSubscriptionDto,
     );
