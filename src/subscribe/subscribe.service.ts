@@ -3,6 +3,7 @@ import { EmailService } from 'src/email/services/email.service';
 import { ICreateSubscription } from './interfaces/create-subscription.interface';
 import { ISendToSubscribers } from './interfaces/send-to-subscribers.interface';
 import { MailingService } from 'src/email/services/mailing.service';
+import { ISubscribeResponse } from './interfaces/subscribe-response.interface';
 
 @Injectable()
 export class SubscribeService {
@@ -13,7 +14,7 @@ export class SubscribeService {
 
   public async createSubscription(
     payload: ICreateSubscription,
-  ): Promise<{ message: string }> {
+  ): Promise<ISubscribeResponse> {
     await this.emailService.create(payload.email);
     return { message: 'E-mail succesfully subscribed' };
   }
