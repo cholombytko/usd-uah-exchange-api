@@ -7,8 +7,8 @@ import { MailingService } from 'src/email/services/mailing.service';
 @Injectable()
 export class SubscribeService {
   constructor(
-    private emailService: EmailService,
-    private mailingService: MailingService,
+    private readonly emailService: EmailService,
+    private readonly mailingService: MailingService,
   ) {}
 
   public async createSubscription(

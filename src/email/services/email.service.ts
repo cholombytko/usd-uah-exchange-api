@@ -6,7 +6,8 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class EmailService {
   constructor(
-    @InjectRepository(Email) private emailRepository: Repository<Email>,
+    @InjectRepository(Email)
+    private readonly emailRepository: Repository<Email>,
   ) {}
 
   public async create(email: string): Promise<Email> {
