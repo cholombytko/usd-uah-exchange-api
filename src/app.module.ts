@@ -5,17 +5,19 @@ import { EmailModule } from './email/email.module';
 import { SubscribeModule } from './subscribe/subscribe.module';
 import { DatabaseModule } from './database.module';
 import { MailModule } from './mail.module';
-import { ScheduleModule } from './schedule/schedule.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { ScheduleModule as ScheduleMailModule } from './schedule/schedule.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    ScheduleModule.forRoot(),
     RateModule,
     EmailModule,
     SubscribeModule,
     DatabaseModule,
     MailModule,
-    ScheduleModule,
+    ScheduleMailModule,
   ],
 })
 export class AppModule {}
