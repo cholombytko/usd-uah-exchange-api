@@ -1,7 +1,8 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Email } from '../entities/email.entity';
 import { Repository } from 'typeorm';
+import { ExistingEmailException } from '../exceptions/existing-email.exception';
 
 @Injectable()
 export class EmailService {
@@ -16,7 +17,7 @@ export class EmailService {
     });
 
     if (existingEmail) {
-      throw new HttpException('E-mail already exists', HttpStatus.CONFLICT);
+      throw new ExistingEmailException();
     }
 
     const newEmail = this.emailRepository.create({ email });
