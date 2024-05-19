@@ -15,7 +15,7 @@ import { Email } from './email/entities/email.entity';
         username: configService.get<string>('DB_USER'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
-        entities: [Email],
+        entities: [__dirname + '/**/entities/*.entity.{ts,js}'],
         synchronize: false,
         migrations: [__dirname + '/../migrations/*.{ts,js}'],
         cli: {
